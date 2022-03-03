@@ -39,7 +39,8 @@ let PutEmployees = (req, res) => {
 let DeleteEmployees = (req, res) => {
   Employee.delete(req.body).then((data) => {
     res.send(data);
-  });
+  })
+  .catch((err) => res.status(404).send({ massage: error }));
 };
 
 module.exports = {

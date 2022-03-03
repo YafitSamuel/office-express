@@ -2,21 +2,28 @@
   "name": "office-express",
   "version": "1.0.0",
   "description": "",
-  "main": "./server/server.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon node ./server/server.js",
-    "start": " node ./server/server.js",
-    "setup":"npm install && npm rum start"
- 
+    "setup": "npm install && npm client && npm run start",
+    "start": " node server/server.js",
+    "server": "nodemon node server/server.js",
+    "client": "cd client && npm run start",
+    "dev":"concurrently --kill-others-on-fail \"npm run server\" \npm run client\" " ,
+    "heroku-postbuild":"cd client && npm install --only=dev && npm install && npm run" 
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.3",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0"
   }
 }
